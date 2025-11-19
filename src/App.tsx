@@ -1,4 +1,3 @@
-// src/App.tsx
 import { Routes, Route, BrowserRouter as Router, Navigate } from 'react-router-dom';
 import LoginPage from './pages/Auth/LoginPage';
 // import RegisterPage from './pages/Auth/RegisterPage';
