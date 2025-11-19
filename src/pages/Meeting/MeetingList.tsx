@@ -83,7 +83,7 @@ const MeetingList: React.FC = () => {
   const fetchMeetings = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://company-project-backend.onrender.com/api/meetings', {
+      const response = await axios.get('http://localhost:5000/api/meetings', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMeetings(response.data);
@@ -98,7 +98,7 @@ const MeetingList: React.FC = () => {
   const fetchDepartments = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://company-project-backend.onrender.com/api/departments', {
+      const response = await axios.get('http://localhost:5000/api/departments', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const departmentNames = response.data.map((dept: any) => dept.name);
@@ -112,7 +112,7 @@ const MeetingList: React.FC = () => {
     setAttendanceLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`https://company-project-backend.onrender.com/api/meeting-attendance/${meetingId}`, {
+      const response = await axios.get(`http://localhost:5000/api/meeting-attendance/${meetingId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAttendance(response.data);
@@ -190,7 +190,7 @@ const MeetingList: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`https://company-project-backend.onrender.com/api/meetings/${meetingId}`, {
+      await axios.delete(`http://localhost:5000/api/meetings/${meetingId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

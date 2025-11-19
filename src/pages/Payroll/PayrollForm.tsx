@@ -74,7 +74,7 @@ const PayrollForm: React.FC = () => {
   const fetchEmployees = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://company-project-backend.onrender.com/api/payroll/employees', {
+      const response = await axios.get('http://localhost:5000/api/payroll/employees', {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -94,7 +94,7 @@ const PayrollForm: React.FC = () => {
   const fetchPayroll = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`https://company-project-backend.onrender.com/api/payroll/${id}`, {
+      const response = await axios.get(`http://localhost:5000/api/payroll/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const payroll = response.data;
@@ -133,7 +133,7 @@ const PayrollForm: React.FC = () => {
     setCalculating(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('https://company-project-backend.onrender.com/api/payroll/calculate',
+      const response = await axios.post('http://localhost:5000/api/payroll/calculate',
         {
           emp_id: formData.emp_id,
           basic_salary: formData.basic_salary,
@@ -177,8 +177,8 @@ const PayrollForm: React.FC = () => {
     try {
       const token = localStorage.getItem('token');
       const url = isEditMode
-        ? `https://company-project-backend.onrender.com/api/payroll/${id}`
-        : 'https://company-project-backend.onrender.com/api/payroll';
+        ? `http://localhost:5000/api/payroll/${id}`
+        : 'http://localhost:5000/api/payroll';
 
       const method = isEditMode ? 'put' : 'post';
 

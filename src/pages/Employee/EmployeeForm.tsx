@@ -88,7 +88,7 @@ const EmployeeForm: React.FC = () => {
   const fetchCurrentUser = async (): Promise<User> => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('https://company-project-backend.onrender.com/api/auth/me', {
+      const response = await axios.get('http://localhost:5000/api/auth/me', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCurrentUser(response.data);
@@ -109,7 +109,7 @@ const EmployeeForm: React.FC = () => {
       const token = localStorage.getItem('token');
       const userRole = user?.role || currentUser?.role;
 
-      let url = 'https://company-project-backend.onrender.com/api/departments';
+      let url = 'http://localhost:5000/api/departments';
 
       try {
         const response = await axios.get(url, {
@@ -122,9 +122,9 @@ const EmployeeForm: React.FC = () => {
       }
 
       if (userRole === 'HR') {
-        url = 'https://company-project-backend.onrender.com/api/hr/departments';
+        url = 'http://localhost:5000/api/hr/departments';
       } else {
-        url = 'https://company-project-backend.onrender.com/api/admin/departments';
+        url = 'http://localhost:5000/api/admin/departments';
       }
 
       const response = await axios.get(url, {
@@ -145,9 +145,9 @@ const EmployeeForm: React.FC = () => {
 
       let url = '';
       if (userRole === 'HR') {
-        url = `https://company-project-backend.onrender.com/api/hr/employees/${id}`;
+        url = `http://localhost:5000/api/hr/employees/${id}`;
       } else {
-        url = `https://company-project-backend.onrender.com/api/admin/employees/${id}`;
+        url = `http://localhost:5000/api/admin/employees/${id}`;
       }
 
       const response = await axios.get(url, {
@@ -205,12 +205,12 @@ const EmployeeForm: React.FC = () => {
       let url = '';
       if (userRole === 'HR') {
         url = isEditMode
-          ? `https://company-project-backend.onrender.com/api/hr/employees/${id}`
-          : 'https://company-project-backend.onrender.com/api/hr/employees';
+          ? `http://localhost:5000/api/hr/employees/${id}`
+          : 'http://localhost:5000/api/hr/employees';
       } else {
         url = isEditMode
-          ? `https://company-project-backend.onrender.com/api/admin/employees/${id}`
-          : 'https://company-project-backend.onrender.com/api/admin/employees';
+          ? `http://localhost:5000/api/admin/employees/${id}`
+          : 'http://localhost:5000/api/admin/employees';
       }
 
       let submitData: any = {};

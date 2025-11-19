@@ -84,7 +84,7 @@ const ProjectAssignment: React.FC = () => {
   const fetchDepartments = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("https://company-project-backend.onrender.com/api/departments", {
+      const response = await fetch("http://localhost:5000/api/departments", {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-Type": "application/json"
@@ -112,7 +112,7 @@ const ProjectAssignment: React.FC = () => {
   const fetchAssignments = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`https://company-project-backend.onrender.com/api/project-assignments/project/${projectId}`, {
+      const response = await fetch(`http://localhost:5000/api/project-assignments/project/${projectId}`, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-Type": "application/json"
@@ -142,9 +142,9 @@ const ProjectAssignment: React.FC = () => {
 
       // Try multiple possible endpoints
       const endpoints = [
-        `https://company-project-backend.onrender.com/api/project-assignments/department/${departmentId}/employees`,
-        `https://company-project-backend.onrender.com/api/employees/department/${departmentId}`,
-        `https://company-project-backend.onrender.com/api/departments/${departmentId}/employees`
+        `http://localhost:5000/api/project-assignments/department/${departmentId}/employees`,
+        `http://localhost:5000/api/employees/department/${departmentId}`,
+        `http://localhost:5000/api/departments/${departmentId}/employees`
       ];
 
       let employeesData: Employee[] = [];
@@ -179,7 +179,7 @@ const ProjectAssignment: React.FC = () => {
 
       // If no endpoint worked, try the general employees endpoint and filter
       if (employeesData.length === 0) {
-        const response = await fetch("https://company-project-backend.onrender.com/api/employees", {
+        const response = await fetch("http://localhost:5000/api/employees", {
           headers: {
             "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json"
@@ -266,7 +266,7 @@ const ProjectAssignment: React.FC = () => {
       setSubmitting(true);
       setError('');
       const token = localStorage.getItem("token");
-      const response = await fetch("https://company-project-backend.onrender.com/api/project-assignments/assign-multiple", {
+      const response = await fetch("http://localhost:5000/api/project-assignments/assign-multiple", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -309,7 +309,7 @@ const ProjectAssignment: React.FC = () => {
   const handleDeleteAssignment = async (assignId: number) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`https://company-project-backend.onrender.com/api/project-assignments/${assignId}`, {
+      const response = await fetch(`http://localhost:5000/api/project-assignments/${assignId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,

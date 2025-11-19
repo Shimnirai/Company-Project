@@ -66,7 +66,7 @@ const PayrollList: React.FC = () => {
     const fetchPayrolls = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('https://company-project-backend.onrender.com/api/payroll', {
+            const response = await axios.get('http://localhost:5000/api/payroll', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setPayrolls(response.data);
@@ -147,7 +147,7 @@ const PayrollList: React.FC = () => {
         try {
             const token = localStorage.getItem('token');
             await axios.put(
-                `https://company-project-backend.onrender.com/api/payroll/${markPaidDialog.payroll.payroll_id}/status`,
+                `http://localhost:5000/api/payroll/${markPaidDialog.payroll.payroll_id}/status`,
                 { status: 'PAID' },
                 {
                     headers: {
@@ -176,7 +176,7 @@ const PayrollList: React.FC = () => {
 
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`https://company-project-backend.onrender.com/api/payroll/${id}`, {
+            await axios.delete(`http://localhost:5000/api/payroll/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
